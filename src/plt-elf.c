@@ -351,9 +351,9 @@ static ElfW(Sym) *elf_hash_find(ElfW(Word) *hash, ElfW(Sym) *symtab,
 
 static ElfW(Sym) *sym_lookup_dyn(plt_lib lib, const char *name)
 {
-    ElfW(Word) *hash    = (ElfW(Word)*) lib_dt_lookup(lib, DT_HASH);
-    ElfW(Sym) *symtab   = (ElfW(Sym)*)  lib_dt_lookup(lib, DT_SYMTAB);
-    const char *strtab  = (const char*) lib_dt_lookup(lib, DT_STRTAB);
+    ElfW(Word) *hash    = lib_dt_lookup(lib, DT_HASH);
+    ElfW(Sym) *symtab   = lib_dt_lookup(lib, DT_SYMTAB);
+    const char *strtab  = lib_dt_lookup(lib, DT_STRTAB);
 
     if (!hash || !symtab || !strtab)
         return NULL;
